@@ -21,15 +21,15 @@ for chiffre in range(1000,2001):
 	
 	req = requests.get(urlcomplet,headers=entete)
 
-	print(req)	 # cela done bien [200] donc tout fonctionne jusque là ! OUF parce que maintenant ça se corse 
+	print(req)	
 	
-	if req.status_code != 200:
+	if req.status_code != 200:         # cela done bien [200] donc tout fonctionne jusque là ! OUF parce que maintenant ça se corse !!! 
 		print("ne marche pas")
 	else: 
 		infos = req.json()
 		#print (infos)# On obtient toutes les données mélangées mais nous on veut obtenir juste les fichiers "audio" donc je dois isoler chaque composante.
 
-		if infos["type"]== "audio":
+		if infos["type"]== "audio": # merci pour le tuyau ici :) !!!!
 			    listes = []
 			    listes.append(infos["titre"])
 			    listes.append(infos["createurs"][0]) # utilisation du [0] pour avoir uniquement le premier createur de la liste. 
