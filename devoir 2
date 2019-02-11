@@ -46,3 +46,16 @@ for chiffre in range(1000,2001):
 		f2 = open(fichier,"a")
 		prout= csv.writer(f2)
 		prout.writerow(listes)    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
