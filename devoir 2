@@ -1,0 +1,38 @@
+#2019 Hannah Raphaëlle Petitclerc-Vilandre
+#Coding : utf-8
+
+import json
+import csv
+import requests
+
+fichier = "banq1.csv" #on donne d'abord un nom au fichier qui sera créé par la suite.
+
+url = "http://collections.banq.qc.ca/api/service-notice?handle=52327/"
+# premier essai avec "http://collections.banq.qc.ca/api/service-notice?handle=52327/1000" pour tester
+
+entete = {
+	"User-Agent":"Hannah Raphaelle Petitclerc-Vilandré - 514-577-5968",
+	"From":"hannahvilandre@gmail.com"
+} 
+
+listes = range(1000,2001)
+
+for nombre in listes:
+	adresse = "http://collections.banq.qc.ca/api/service-notice?handle=52327/" + str(nombre) #J'ai essayé de mettre "url" à la place de toute la ligne de l'url mais ça me fait une erreur...donc j'ai laissé comme ça.
+	print(adresse) 
+  # ici on obtient toute les adresses jusqu'à "/" suivies du chiffre 1000 jusqu'à 2000 (après avoir testé je dois mettre range 1000, 2001 sinon on obtient pas "/"2000) 
+	
+  req = requests.get(adresse,headers=entete)	
+	print (req)	
+  # cela done bien [200] donc tout fonctionne jusque là ! OUF parce que maintenant ça se corse 
+	
+  if req.status_code == 200:
+		infos = req.json()
+		print (infos)
+    # On obtient toutes les données mélangées mais nous on veut obtenir juste les fichiers "audio" donc je dois les isoler 
+		
+    for audio in infos.values():
+			print(audio) 
+      # Ici on arrive à avoir tous les fichiers audio avec toutes les détails. Mais on les classer par titre, créateur (le premier), l'année et le support d'enregistrement) donc :
+			
+    
