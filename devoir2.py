@@ -31,7 +31,7 @@ for chiffre in range(1000,2001):
 
 		if infos["type"]== "audio": # merci pour le tuyau ici :) !!!!
 			    listes = []
-			    listes.append(infos["titre"][:(x.find("/"))]) # pour ne voir que le titre et rien d'autre après.
+			    listes.append(infos["titre"].split(" /")] # pour ne voir que le titre et rien d'autre après.
 			    listes.append(infos["createurs"][0]) # utilisation du [0] pour avoir uniquement le premier createur de la liste. 
 			    listes.append(infos["dateCreation"])
 			    listes.append(infos["descriptionMat"])
